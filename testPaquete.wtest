@@ -1,0 +1,14 @@
+import paquete.*
+import destino.*
+
+describe "El paquete a Spilberg"{
+    test "Si el paquete va a matrix vale 500"{
+        paquete.destino(matrix)
+        assert.equals(500, paquete.precio())
+    }
+
+    test "Si el paquete va a brooklyn vale 150"{
+        paquete.destino(brooklyn)
+        assert.equals(150, paquete.precio())
+    }
+}
