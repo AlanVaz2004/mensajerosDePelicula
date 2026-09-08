@@ -11,6 +11,10 @@ object paquete{
         destino = _destino
     }
 
+    method fuePagado(){
+        return fuePagado
+    }
+
     method fuePagado(_fuePagado){
         fuePagado = _fuePagado
     }

@@ -11,4 +11,10 @@ describe "El paquete a Spilberg"{
         paquete.destino(brooklyn)
         assert.equals(150, paquete.precio())
     }
+
+    test "El paquete pasa a estar pagado"{
+        paquete.fuePagado(false) //al principio 
+        paquete.fuePagado(true) //luego pasa a estar pago
+        assert.equals(true, paquete.fuePagado())
+    }
 }
