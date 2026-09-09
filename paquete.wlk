@@ -5,6 +5,10 @@ object paquete{
     var fuePagado = false
     var mensajero = jeanGrey
 
+    method puedeSerEntregado(){
+        return fuePagado //faltan otros 2 booleanos para saber si puede ser entregado 
+    }
+
     method mensajero(_mensajero){
         mensajero = _mensajero
     }
