@@ -1,5 +1,6 @@
 import paquete.*
 import destino.*
+import mensajero.*
 
 describe "El paquete a Spilberg"{
     test "Si el paquete va a matrix vale 500"{
@@ -16,5 +17,12 @@ describe "El paquete a Spilberg"{
         paquete.fuePagado(false) //al principio 
         paquete.fuePagado(true) //luego pasa a estar pago
         assert.equals(true, paquete.fuePagado())
+    }
+
+    test "Neo no puede llevar el paquete"{
+        paquete.fuePagado(false)
+        paquete.destino(matrix)
+        paquete.mensajero(neo)
+        assert.equals(false, paquete.puedeSerEntregado() )
     }
 }

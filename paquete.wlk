@@ -1,7 +1,17 @@
 import destino.*
+import mensajero.*
 object paquete{
     var destino = matrix
     var fuePagado = false
+    var mensajero = jeanGrey
+
+    method mensajero(_mensajero){
+        mensajero = _mensajero
+    }
+
+    method mensajero(){
+        return mensajero
+    }
     
     method precio(){
         return destino.precio()
