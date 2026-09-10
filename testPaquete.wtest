@@ -21,9 +21,11 @@ describe "El paquete a Spilberg"{
     }
 
     test "Neo no puede llevar el paquete"{
+        //pedido como caso de de prueba en enunciado
         paquete.fuePagado(false)
         paquete.destino(matrix)
         paquete.mensajero(neo)
+        neo.puedeLlamar(true)
         assert.equals(false, paquete.puedeSerEntregado() )
     }
 
@@ -32,5 +34,34 @@ describe "El paquete a Spilberg"{
         saraConnor.peso(70)
         camion.acoplados(1)
         assert.equals(1070, saraConnor.peso() )
+    }
+
+    test "Jean puede llevar el paquete a la matrix"{
+        //pedido como caso de de prueba en enunciado
+        paquete.fuePagado(true)
+        paquete.destino(matrix)
+        paquete.mensajero(jeanGrey)
+        assert.equals(true, paquete.puedeSerEntregado() )
+    }
+
+    test "Sara no puede llevar el paquete a brooklyn"{
+        //pedido como caso de de prueba en enunciado
+        paquete.fuePagado(true)
+        paquete.destino(brooklyn)
+        paquete.mensajero(saraConnor)
+        saraConnor.peso(70)
+        saraConnor.vehiculo(camion)
+        camion.acoplados(1)
+        assert.equals(false, paquete.puedeSerEntregado())
+    }
+
+    test "Sara puede llevar el paquete a brooklyn"{
+        //pedido como caso de de prueba en enunciado
+        paquete.fuePagado(true)
+        paquete.destino(brooklyn)
+        paquete.mensajero(saraConnor)
+        saraConnor.peso(70)
+        saraConnor.vehiculo(moto)
+        assert.equals(true, paquete.puedeSerEntregado())
     }
 }
