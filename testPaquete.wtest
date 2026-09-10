@@ -64,4 +64,14 @@ describe "El paquete a Spilberg"{
         saraConnor.vehiculo(moto)
         assert.that(paquete.puedeSerEntregado())
     }
+
+    test "El hecho de que Sara pese 1000 kilos no es problema"{
+        paquete.fuePagado(true)
+        paquete.destino(brooklyn)
+        paquete.mensajero(saraConnor)
+        saraConnor.peso(0)
+        saraConnor.vehiculo(camion)
+        camion.acoplados(1)
+        assert.that(paquete.puedeSerEntregado())
+    }
 }
