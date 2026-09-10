@@ -17,7 +17,7 @@ describe "El paquete a Spilberg"{
     test "El paquete pasa a estar pagado"{
         paquete.fuePagado(false) //al principio 
         paquete.fuePagado(true) //luego pasa a estar pago
-        assert.equals(true, paquete.fuePagado())
+        assert.that(paquete.fuePagado())
     }
 
     test "Neo no puede llevar el paquete"{
@@ -26,7 +26,7 @@ describe "El paquete a Spilberg"{
         paquete.destino(matrix)
         paquete.mensajero(neo)
         neo.puedeLlamar(true)
-        assert.equals(false, paquete.puedeSerEntregado() )
+        assert.notThat(paquete.puedeSerEntregado() )
     }
 
     test "Sara pesa 1070 kilos por usar camion con un acoplado"{
@@ -41,7 +41,7 @@ describe "El paquete a Spilberg"{
         paquete.fuePagado(true)
         paquete.destino(matrix)
         paquete.mensajero(jeanGrey)
-        assert.equals(true, paquete.puedeSerEntregado() )
+        assert.that(paquete.puedeSerEntregado() )
     }
 
     test "Sara no puede llevar el paquete a brooklyn"{
@@ -52,7 +52,7 @@ describe "El paquete a Spilberg"{
         saraConnor.peso(70)
         saraConnor.vehiculo(camion)
         camion.acoplados(1)
-        assert.equals(false, paquete.puedeSerEntregado())
+        assert.notThat(paquete.puedeSerEntregado())
     }
 
     test "Sara puede llevar el paquete a brooklyn"{
@@ -62,6 +62,6 @@ describe "El paquete a Spilberg"{
         paquete.mensajero(saraConnor)
         saraConnor.peso(70)
         saraConnor.vehiculo(moto)
-        assert.equals(true, paquete.puedeSerEntregado())
+        assert.that(paquete.puedeSerEntregado())
     }
 }
