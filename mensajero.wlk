@@ -1,3 +1,4 @@
+import vehiculos.*
 object jeanGrey{
     const puedeLlamar = true
     const peso = 65
@@ -32,9 +33,10 @@ object neo{
 object saraConnor{
     const puedeLlamar = false
     var peso = 70
+    var vehiculo = camion
 
     method peso(){
-        return peso
+        return peso + vehiculo.peso()
     }
 
     method peso(_peso){
@@ -43,6 +45,10 @@ object saraConnor{
 
     method puedeLlamar(){
         return puedeLlamar
+    }
+
+    method vehiculo(_vehiculo){
+        vehiculo = _vehiculo
     }
 
 }

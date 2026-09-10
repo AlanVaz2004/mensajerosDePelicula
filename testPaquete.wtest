@@ -1,6 +1,7 @@
 import paquete.*
 import destino.*
 import mensajero.*
+import vehiculos.*
 
 describe "El paquete a Spilberg"{
     test "Si el paquete va a matrix vale 500"{
@@ -24,5 +25,12 @@ describe "El paquete a Spilberg"{
         paquete.destino(matrix)
         paquete.mensajero(neo)
         assert.equals(false, paquete.puedeSerEntregado() )
+    }
+
+    test "Sara pesa 1070 kilos por usar camion con un acoplado"{
+        saraConnor.vehiculo(camion)
+        saraConnor.peso(70)
+        camion.acoplados(1)
+        assert.equals(1070, saraConnor.peso() )
     }
 }
