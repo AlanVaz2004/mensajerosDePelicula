@@ -6,7 +6,7 @@ object paquete{
     var mensajero = jeanGrey
 
     method puedeSerEntregado(){
-        return fuePagado //faltan otros 2 booleanos para saber si puede ser entregado 
+        return fuePagado && destino.dejaEntrar(mensajero)
     }
 
     method mensajero(_mensajero){
