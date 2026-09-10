@@ -4,19 +4,18 @@ object matrix{
         return 500
     }
 
-    method dejaEntrar(){
-
+    method dejaEntrar(mensajero){
+        return mensajero.puedeLlamar()
     }
 }
 
 object brooklyn{
-    var pesoTotal = []
 
     method precio(){
         return 150
     }
 
-    method dejaEntrar(){
-
+    method dejaEntrar(mensajero){
+        return mensajero.peso() <= 1000
     }
 }
