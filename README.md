@@ -55,11 +55,13 @@ Determinar **si ese _paquete_ puede ser entregado por una _persona_ en un determ
 - Revisá que no haya quedado precálculo en el peso de Sara
 
 Segunda parte: Empresa de mensajería
-Ahora aparece una empresa de mensajería. Esta tiene un conjunto de mensajeros, los cuales podrían ser cualquiera de los que ya tenemos y otros que se agreguen en el futuross.
+Ahora aparece una empresa de mensajería. Esta tiene un conjunto de mensajeros, los cuales podrían ser cualquiera de los que ya tenemos y otros que se agreguen en el futuro.
 Se necesita poder:
 1.Contratar a un mensajero
-2.Despedir a un mensajeroDespedir a todos los mensajerosAnalizar si la mensajeria es grande (si tiene mas de dos mensajeros)
-5.Consultar si el paquete puede ser entregado por el primer empleado de la la empresa de mensajería.
+2.Despedir a un mensajero
+3.Despedir a todos los mensajeros
+4.Analizar si la mensajeria es grande (si tiene mas de dos mensajeros)
+5.Consultar si el paquete puede ser entregado por el primer empleado de la empresa de mensajería.
 6.Saber el peso del último mensajero de la empresa.
 7.Hacer al menos un test por cada punto de los anteriores que demuestren su correcto funcionamiento.
 
