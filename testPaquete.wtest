@@ -78,7 +78,7 @@ describe "El paquete a Spilberg"{
     test "Contratar a neo como mensajero"{
         mensajeros.contratar(neo)
         //neo forma parte de la coleccion de contratados(de alguna manera)
-        assert.that(mensajeros.contratados(neo) )
+        assert.that(mensajeros.contratados(neo))
     }
 
 }

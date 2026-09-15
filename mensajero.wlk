@@ -61,6 +61,6 @@ object mensajeros{
     }
 
     method contratados(mensajero){
-        contratados.contains(mensajero)
+        return contratados.contains(mensajero)
     }
 }
