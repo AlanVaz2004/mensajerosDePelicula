@@ -91,7 +91,7 @@ describe "El paquete a Spilberg"{
         mensajeros.contratar(jeanGrey)
         mensajeros.contratar(saraConnor)
         mensajeros.despedirATodos()
-        assert.that(mensajeros.contratados().isEmpty() )
+        assert.notThat(mensajeros.hayMensajerosContratados() )
     }
 
     test "La mensajeria es grande"{

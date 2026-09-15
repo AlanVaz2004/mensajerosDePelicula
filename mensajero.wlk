@@ -65,13 +65,13 @@ object mensajeros{
         return contratados.contains(mensajero)
     }
 
-    method contratados(){
+    /*method contratados(){
         return contratados
     }
-
+     No son necesarios y por tanto no deben estar
     method despedidos(){
         return despedidos
-    }
+    }*/
 
     method despedir(mensajero){
         contratados.remove(mensajero)
@@ -84,7 +84,11 @@ object mensajeros{
 
     method despedirATodos(){
         despedidos.addAll(contratados)
-        contratados.removeAll(contratados)
+        contratados.clear()
+    }
+
+    method hayMensajerosContratados(){
+        return not contratados.isEmpty()
     }
 
     method esGrande(){
