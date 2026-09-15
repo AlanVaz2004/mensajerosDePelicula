@@ -55,6 +55,7 @@ object saraConnor{
 
 object mensajeros{
     const contratados = []
+    const despedidos = []
 
     method contratar(mensajero){
         contratados.add(mensajero)
@@ -62,5 +63,14 @@ object mensajeros{
 
     method contratados(mensajero){
         return contratados.contains(mensajero)
+    }
+
+    method despedir(mensajero){
+        contratados.remove(mensajero)
+        despedidos.add(mensajero)
+    }
+
+    method despedidos(mensajero){
+        return despedidos.contains(mensajero)
     }
 }
