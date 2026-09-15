@@ -86,4 +86,8 @@ object mensajeros{
         despedidos.addAll(contratados)
         contratados.removeAll(contratados)
     }
+
+    method esGrande(){
+        return contratados.size() > 2
+    }
 }
