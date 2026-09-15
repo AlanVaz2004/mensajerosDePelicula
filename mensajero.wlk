@@ -56,7 +56,11 @@ object saraConnor{
 object mensajeros{
     const contratados = []
 
-    method contratar(){
-        
+    method contratar(mensajero){
+        contratados.add(mensajero)
+    }
+
+    method contratados(mensajero){
+        contratados.contains(mensajero)
     }
 }
