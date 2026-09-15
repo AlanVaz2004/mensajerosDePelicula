@@ -77,13 +77,20 @@ describe "El paquete a Spilberg"{
 
     test "Contratar a neo como mensajero"{
         mensajeros.contratar(neo)
-        assert.that(mensajeros.contratados(neo))
+        assert.that(mensajeros.estaContratado(neo))
     }
 
-    test "Despedir a neo"{
+    test "Despedir a saraConnor"{
+        mensajeros.contratar(saraConnor)
+        mensajeros.despedir(saraConnor)
+        assert.that(mensajeros.estaDespedido(saraConnor))
+    }
+
+    test "Despedir a todos"{
         mensajeros.contratar(neo)
-        mensajeros.despedir(neo)
-        assert.that(mensajeros.despedidos(neo) )
+        mensajeros.contratar(jeanGrey)
+        mensajeros.contratar(saraConnor)
+        mensajeros.despedirATodos()
+        assert.that(mensajeros.contratados().isEmpty() )
     }
-
 }

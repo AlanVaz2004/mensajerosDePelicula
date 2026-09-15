@@ -61,8 +61,16 @@ object mensajeros{
         contratados.add(mensajero)
     }
 
-    method contratados(mensajero){
+    method estaContratado(mensajero){
         return contratados.contains(mensajero)
+    }
+
+    method contratados(){
+        return contratados
+    }
+
+    method despedidos(){
+        return despedidos
     }
 
     method despedir(mensajero){
@@ -70,7 +78,12 @@ object mensajeros{
         despedidos.add(mensajero)
     }
 
-    method despedidos(mensajero){
+    method estaDespedido(mensajero){
         return despedidos.contains(mensajero)
+    }
+
+    method despedirATodos(){
+        despedidos.addAll(contratados)
+        contratados.removeAll(contratados)
     }
 }
