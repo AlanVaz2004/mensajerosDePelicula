@@ -74,4 +74,10 @@ describe "El paquete a Spilberg"{
         camion.acoplados(1)
         assert.that(paquete.puedeSerEntregado())
     }
+
+    test "Contratar a neo como mensajero"{
+        //neo forma parte de la coleccion de contratados(de alguna manera)
+        assert.that(neo.estaContratado() )
+    }
+
 }

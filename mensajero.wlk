@@ -52,3 +52,11 @@ object saraConnor{
     }
 
 }
+
+object mensajeros{
+    const contratados = []
+
+    method contratar(){
+        
+    }
+}
