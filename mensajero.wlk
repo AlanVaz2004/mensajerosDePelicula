@@ -94,4 +94,9 @@ object mensajeros{
     method esGrande(){
         return contratados.size() > 2
     }
+
+    method elPrimeroPuedeEntregar(){
+        //TODO:Corregir este return para que se fije si el primero puede entregar el paquete
+        return contratados.first().puedeSerEntregado()
+    }
 }

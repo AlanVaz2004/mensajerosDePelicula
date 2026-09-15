@@ -100,4 +100,26 @@ describe "El paquete a Spilberg"{
         mensajeros.contratar(saraConnor)
         assert.that(mensajeros.esGrande() )
     }
+
+    test "Paquete puede ser entregado por el primer empleado de la empresa de mensajería"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(jeanGrey)
+        mensajeros.contratar(saraConnor)
+        paquete.fuePagado(true)
+        paquete.destino(matrix)
+        paquete.mensajero(neo)
+        neo.puedeLlamar(true)
+        assert.equals(true,mensajeros.elPrimeroPuedeEntregar() )
+    }
+
+    test "Paquete no puede ser entregado por el primer empleado de la empresa de mensajería"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(jeanGrey)
+        mensajeros.contratar(saraConnor)
+        paquete.fuePagado(false)
+        paquete.destino(matrix)
+        paquete.mensajero(neo)
+        neo.puedeLlamar(true)
+        assert.equals(false, mensajeros.elPrimeroPuedeEntregar() )
+    }
 }
