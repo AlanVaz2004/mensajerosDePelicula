@@ -3,18 +3,9 @@ import mensajero.*
 object paquete{
     var destino = matrix
     var fuePagado = false
-    var mensajero = jeanGrey
 
-    method puedeSerEntregado(){
+    method puedeSerEntregado(mensajero){//necesito por parametro poner el mensajero
         return fuePagado && destino.dejaEntrar(mensajero)
-    }
-
-    method mensajero(_mensajero){
-        mensajero = _mensajero
-    }
-
-    method mensajero(){
-        return mensajero
     }
     
     method precio(){

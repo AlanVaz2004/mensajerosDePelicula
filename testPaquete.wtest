@@ -24,9 +24,8 @@ describe "El paquete a Spilberg"{
         //pedido como caso de de prueba en enunciado
         paquete.fuePagado(false)
         paquete.destino(matrix)
-        paquete.mensajero(neo)
         neo.puedeLlamar(true)
-        assert.notThat(paquete.puedeSerEntregado() )
+        assert.notThat(paquete.puedeSerEntregado(neo) )
     }
 
     test "Sara pesa 1070 kilos por usar camion con un acoplado"{
@@ -40,42 +39,42 @@ describe "El paquete a Spilberg"{
         //pedido como caso de de prueba en enunciado
         paquete.fuePagado(true)
         paquete.destino(matrix)
-        paquete.mensajero(jeanGrey)
-        assert.that(paquete.puedeSerEntregado() )
+        assert.that(paquete.puedeSerEntregado(jeanGrey) )
     }
 
     test "Sara no puede llevar el paquete a brooklyn"{
         //pedido como caso de de prueba en enunciado
         paquete.fuePagado(true)
         paquete.destino(brooklyn)
-        paquete.mensajero(saraConnor)
         saraConnor.peso(70)
         saraConnor.vehiculo(camion)
         camion.acoplados(1)
-        assert.notThat(paquete.puedeSerEntregado())
+        assert.notThat(paquete.puedeSerEntregado(saraConnor))
     }
 
     test "Sara puede llevar el paquete a brooklyn"{
         //pedido como caso de de prueba en enunciado
         paquete.fuePagado(true)
         paquete.destino(brooklyn)
-        paquete.mensajero(saraConnor)
         saraConnor.peso(70)
         saraConnor.vehiculo(moto)
-        assert.that(paquete.puedeSerEntregado())
+        assert.that(paquete.puedeSerEntregado(saraConnor))
     }
 
     test "El hecho de que Sara pese 1000 kilos no es problema"{
         paquete.fuePagado(true)
         paquete.destino(brooklyn)
-        paquete.mensajero(saraConnor)
         saraConnor.peso(0)
         saraConnor.vehiculo(camion)
         camion.acoplados(1)
-        assert.that(paquete.puedeSerEntregado())
+        assert.that(paquete.puedeSerEntregado(saraConnor))
     }
 
-    test "Contratar a neo como mensajero"{
+}
+
+describe "La mensajeria"{
+    
+      test "Contratar a neo como mensajero"{
         mensajeros.contratar(neo)
         assert.that(mensajeros.estaContratado(neo))
     }
@@ -107,7 +106,6 @@ describe "El paquete a Spilberg"{
         mensajeros.contratar(saraConnor)
         paquete.fuePagado(true)
         paquete.destino(matrix)
-        paquete.mensajero(neo)
         neo.puedeLlamar(true)
         assert.equals(true,mensajeros.elPrimeroPuedeEntregar() )
     }
@@ -118,7 +116,6 @@ describe "El paquete a Spilberg"{
         mensajeros.contratar(saraConnor)
         paquete.fuePagado(false)
         paquete.destino(matrix)
-        paquete.mensajero(neo)
         neo.puedeLlamar(true)
         assert.equals(false, mensajeros.elPrimeroPuedeEntregar() )
     }

@@ -1,4 +1,5 @@
 import vehiculos.*
+import paquete.*
 object jeanGrey{
     const puedeLlamar = true
     const peso = 65
@@ -65,14 +66,6 @@ object mensajeros{
         return contratados.contains(mensajero)
     }
 
-    /*method contratados(){
-        return contratados
-    }
-     No son necesarios y por tanto no deben estar
-    method despedidos(){
-        return despedidos
-    }*/
-
     method despedir(mensajero){
         contratados.remove(mensajero)
         despedidos.add(mensajero)
@@ -96,7 +89,7 @@ object mensajeros{
     }
 
     method elPrimeroPuedeEntregar(){
-        //TODO:Corregir este return para que se fije si el primero puede entregar el paquete
-        return contratados.first().puedeSerEntregado()
+        return paquete.puedeSerEntregado(contratados.first()) 
+        //preguntar a paquete si puede ser entregado y enviarle el mensajero por parametro
     }
 }
