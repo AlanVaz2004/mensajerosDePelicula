@@ -69,7 +69,6 @@ describe "El paquete a Spilberg"{
         camion.acoplados(1)
         assert.that(paquete.puedeSerEntregado(saraConnor))
     }
-
 }
 
 describe "La mensajeria"{
