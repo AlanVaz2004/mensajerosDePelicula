@@ -90,14 +90,14 @@ describe "La mensajeria"{
         mensajeros.contratar(jeanGrey)
         mensajeros.contratar(saraConnor)
         mensajeros.despedirATodos()
-        assert.notThat(mensajeros.hayMensajerosContratados() )
+        assert.notThat(mensajeros.hayMensajerosContratados())
     }
 
     test "La mensajeria es grande"{
         mensajeros.contratar(neo)
         mensajeros.contratar(jeanGrey)
         mensajeros.contratar(saraConnor)
-        assert.that(mensajeros.esGrande() )
+        assert.that(mensajeros.esGrande())
     }
 
     test "Paquete puede ser entregado por el primer empleado de la empresa de mensajería"{
@@ -107,7 +107,7 @@ describe "La mensajeria"{
         paquete.fuePagado(true)
         paquete.destino(matrix)
         neo.puedeLlamar(true)
-        assert.equals(true,mensajeros.elPrimeroPuedeEntregar() )
+        assert.equals(true,mensajeros.elPrimeroPuedeEntregar())
     }
 
     test "Paquete no puede ser entregado por el primer empleado de la empresa de mensajería"{
@@ -117,6 +117,20 @@ describe "La mensajeria"{
         paquete.fuePagado(false)
         paquete.destino(matrix)
         neo.puedeLlamar(true)
-        assert.equals(false, mensajeros.elPrimeroPuedeEntregar() )
+        assert.equals(false, mensajeros.elPrimeroPuedeEntregar())
+    }
+
+    test "Peso de neo(que es el ultimo de la mensajeria) es cero"{
+        mensajeros.contratar(jeanGrey)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(neo)
+        assert.equals(0, mensajeros.pesoDelUltimoMensajero())
+    }
+
+    test "Peso de Jean Grey(que es la ultima de la mensajeria) es 65"{
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(neo)
+        mensajeros.contratar(jeanGrey)
+        assert.equals(65, mensajeros.pesoDelUltimoMensajero())
     }
 }

@@ -92,4 +92,8 @@ object mensajeros{
         return paquete.puedeSerEntregado(contratados.first()) 
         //preguntar a paquete si puede ser entregado y enviarle el mensajero por parametro
     }
+
+    method pesoDelUltimoMensajero(){
+        return contratados.last().peso()
+    }
 }
