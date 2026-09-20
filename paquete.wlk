@@ -22,7 +22,7 @@ object paquetito{
     const fuePagado = true
 
     method puedeSerEntregado(mensajero){
-        return true
+        return fuePagado
     }
 
     method precio(){
@@ -31,23 +31,25 @@ object paquetito{
 }
 
 object paquetonViajero{
-    const destinos = []
-    var precio = 0 //cambia segun cuantos destinos haya
-    const pagos = []
+    const destinos = [] //uso list ya que permite duplicados
+    var precio = 0 
+    const pagos = [] //uso list ya que permite duplicados
 
     method agregarDestino(destino){
         destinos.add(destino)
     }
 
     method precio(_precio){
-        //precio que cambia segun elementos de la lista destinos
+        precio = _precio * destinos.size()//precio que cambia segun elementos de la lista destinos
     }
 
-    method pagoTotal(){
-        //igual cantidad de elementos que destinos pero 100 pesos en cada posicion
+    method pagos(precioDeTodosLosDestinos){
+        pagos.add(100) * destinos.size()
+        //igual cantidad de elementos que destinos pero 100 en cada posicion de la lista
     }
 
     method puedeSerEntregado(mensajero){
+        
         //depende de si puede pasar el mensajero por todos los destinos
     }
 }
