@@ -133,3 +133,25 @@ describe "La mensajeria"{
         assert.equals(65, mensajeros.pesoDelUltimoMensajero())
     }
 }
+
+describe "Mensajeria recargada"{
+
+    test "Paquetito siempre puede ser entregado (parte 1)"{
+        assert.that(paquetito.puedeSerEntregado(neo) )
+    }
+
+    test "Paquetito siempre puede ser entregado (parte 2)"{
+        assert.that(paquetito.puedeSerEntregado(jeanGrey) )
+    }
+
+    test "Paquetito siempre puede ser entregado (parte 3)"{
+        assert.that(paquetito.puedeSerEntregado(saraConnor) )
+    }
+
+    test "Paqueton viajero tiene una lista de destinos con matrix y brooklyn"{
+        paquetonViajero.agregarDestino(matrix)
+        paquetonViajero.agregarDestino(brooklyn)
+        assert.equals([matrix, brooklyn], paquetonViajero.destinos() )
+    }
+
+}

@@ -19,10 +19,8 @@ object paquete{
 
 object paquetito{
 
-    const fuePagado = true
-
     method puedeSerEntregado(mensajero){
-        return fuePagado
+        return true
     }
 
     method precio(){
@@ -39,19 +37,29 @@ object paquetonViajero{
         destinos.add(destino)
     }
 
+    method destinos(){
+        return destinos
+    }
+
     method precio(_precio){
         precio = _precio * destinos.size()//precio que cambia segun elementos de la lista destinos
     }
 
-    method pagos(precioDeTodosLosDestinos){
-        pagos.add(100) * destinos.size()
+    method pagos(precioDeTodosLosDestinos){ //TODO
+        pagos.add(100) * destinos.size() //debi hacer un clousure en que tenga dentro el destino.size, ya que el * no funciona como quisiera en este caso
         //igual cantidad de elementos que destinos pero 100 en cada posicion de la lista
     }
-
+    method pagos(){
+        return
+    }
     const verificarEntrega = { mensajero => paquete.puedeSerEntregado(mensajero) }
 
     method puedeSerEntregado(mensajero){
         return destinos.all( verificarEntrega.apply(mensajero) )
         //depende de si puede pasar el mensajero por todos los destinos
+    }
+
+    method pagarUnDestino(){
+        //pagar los 100 de un destino de la lista (por tanto quitar ese pago de lista de pagos)
     }
 }
