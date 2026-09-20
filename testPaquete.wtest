@@ -153,5 +153,8 @@ describe "Mensajeria recargada"{
         paquetonViajero.agregarDestino(brooklyn)
         assert.equals([matrix, brooklyn], paquetonViajero.destinos() )
     }
-
+    
+    test "Neo puede llevar el paquete a matrix y brooklyn"{
+        assert.that(paquetonViajero.puedeSerEntregado(neo) )
+    }
 }

@@ -52,7 +52,7 @@ object paquetonViajero{
     method pagos(){
         return
     }
-    const verificarEntrega = { mensajero => paquete.puedeSerEntregado(mensajero) }
+    const verificarEntrega = { mensajero => paquete.puedeSerEntregado(mensajero) } //toma en cuanta siempre el mismo paquete y por tanto esta mal
 
     method puedeSerEntregado(mensajero){
         return destinos.all( verificarEntrega.apply(mensajero) )
