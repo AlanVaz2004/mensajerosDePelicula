@@ -48,8 +48,10 @@ object paquetonViajero{
         //igual cantidad de elementos que destinos pero 100 en cada posicion de la lista
     }
 
+    const verificarEntrega = { mensajero => paquete.puedeSerEntregado(mensajero) }
+
     method puedeSerEntregado(mensajero){
-        
+        return destinos.all( verificarEntrega.apply(mensajero) )
         //depende de si puede pasar el mensajero por todos los destinos
     }
 }
