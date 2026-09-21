@@ -32,6 +32,7 @@ object paquetonViajero{
     const destinos = [] //uso list ya que permite duplicados
     var precio = 0 
     const pagos = [] //uso list ya que permite duplicados
+    var property estaPago = true
 
     method agregarDestino(destino){
         destinos.add(destino)
@@ -52,10 +53,9 @@ object paquetonViajero{
     method pagos(){
         return
     }
-    const verificarEntrega = { mensajero => paquete.puedeSerEntregado(mensajero) } //toma en cuanta siempre el mismo paquete y por tanto esta mal
 
     method puedeSerEntregado(mensajero){
-        return destinos.all( verificarEntrega.apply(mensajero) )
+        return estaPago && mensajero.pasaPorTodosLosDestinos()  
         //depende de si puede pasar el mensajero por todos los destinos
     }
 

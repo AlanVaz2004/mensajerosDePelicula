@@ -1,5 +1,6 @@
 import vehiculos.*
 import paquete.*
+import destino.*
 object jeanGrey{
     const puedeLlamar = true
     const peso = 65
@@ -16,6 +17,7 @@ object jeanGrey{
 object neo{
     var puedeLlamar = true
     const peso = 0
+    var property destino = matrix
 
     method peso(){
         return peso
@@ -27,6 +29,10 @@ object neo{
 
     method puedeLlamar(_puedeLlamar){
         puedeLlamar = _puedeLlamar
+    }
+
+    method pasaPorTodosLosDestinos(){
+        return paquetonViajero.destinos().all({destino => destino.dejaEntrar(self) } )
     }
 
 }
