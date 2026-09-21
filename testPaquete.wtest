@@ -154,7 +154,15 @@ describe "Mensajeria recargada"{
         assert.equals([matrix, brooklyn], paquetonViajero.destinos() )
     }
     
-    test "Neo puede llevar el paquete a matrix y brooklyn"{
+    test "Neo puede llevar el paquete a todos los destinos"{
+        neo.puedeLlamar(true)
         assert.that(paquetonViajero.puedeSerEntregado(neo) )
     }
+
+    test "Sara no puede llevar el paquete a todos los destinos"{
+        saraConnor.peso(70)
+        saraConnor.vehiculo(camion)
+        camion.acoplados(1)
+        assert.notThat(paquetonViajero.puedeSerEntregado(saraConnor) )
+    }//por alguna razon da verdadero
 }

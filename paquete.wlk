@@ -55,7 +55,7 @@ object paquetonViajero{
     }
 
     method puedeSerEntregado(mensajero){
-        return estaPago && mensajero.pasaPorTodosLosDestinos()  
+        return mensajero.pasaPorTodosLosDestinos() && estaPago    
         //depende de si puede pasar el mensajero por todos los destinos
     }
 

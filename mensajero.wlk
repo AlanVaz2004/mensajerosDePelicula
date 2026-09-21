@@ -12,12 +12,15 @@ object jeanGrey{
     method puedeLlamar(){
         return puedeLlamar
     }
+
+    method pasaPorTodosLosDestinos(){
+        return paquetonViajero.destinos().all({destino => destino.dejaEntrar(self) } )
+    }
 }
 
 object neo{
     var puedeLlamar = true
     const peso = 0
-    var property destino = matrix
 
     method peso(){
         return peso
@@ -56,6 +59,10 @@ object saraConnor{
 
     method vehiculo(_vehiculo){
         vehiculo = _vehiculo
+    }
+
+    method pasaPorTodosLosDestinos(){
+        return paquetonViajero.destinos().all({destino => destino.dejaEntrar(self) } )
     }
 
 }
