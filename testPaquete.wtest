@@ -155,14 +155,31 @@ describe "Mensajeria recargada"{
     }
     
     test "Neo puede llevar el paquete a todos los destinos"{
+        paquetonViajero.agregarDestino(matrix)
+        paquetonViajero.agregarDestino(brooklyn)
         neo.puedeLlamar(true)
         assert.that(paquetonViajero.puedeSerEntregado(neo) )
     }
 
-    test "Sara no puede llevar el paquete a todos los destinos"{
+    test "Sara no puede llevar el paquete a todos los destinos(no puede llamar) "{
+        saraConnor.peso(70)
+        saraConnor.vehiculo(camion)
+        paquetonViajero.agregarDestino(matrix)
+        paquetonViajero.agregarDestino(brooklyn)
+        assert.notThat(paquetonViajero.puedeSerEntregado(saraConnor) )
+    }
+
+    test "Sara no puede llevar el paquete a todos los destinos(pesa demasiado) "{
         saraConnor.peso(70)
         saraConnor.vehiculo(camion)
         camion.acoplados(1)
+        paquetonViajero.agregarDestino(brooklyn)
         assert.notThat(paquetonViajero.puedeSerEntregado(saraConnor) )
-    }//por alguna razon da verdadero
+    }
+
+    test "Jean Grey puede llevar el paquete a todos los destinos"{
+        paquetonViajero.agregarDestino(brooklyn)
+        paquetonViajero.agregarDestino(matrix)
+        assert.that(paquetonViajero.puedeSerEntregado(jeanGrey) )
+    }
 }
