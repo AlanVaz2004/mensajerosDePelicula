@@ -182,4 +182,10 @@ describe "Mensajeria recargada"{
         paquetonViajero.agregarDestino(matrix)
         assert.that(paquetonViajero.puedeSerEntregado(jeanGrey) )
     }
+
+    test "El precio del paqueton viajero es 200 ya que tiene 2 destinos"{
+        paquetonViajero.agregarDestino(brooklyn)
+        paquetonViajero.agregarDestino(matrix)
+        assert.equals(200, paquetonViajero.precio() )
+    }//da falso ya que todavia no termine con lo del precio
 }

@@ -31,9 +31,7 @@ object paquetito{
 object paquetonViajero{
     const destinos = [] //uso list ya que permite duplicados
     var precio = 0 
-    const pagos = [] //uso list ya que permite duplicados
-    var property estaPago = true
-
+    
     method agregarDestino(destino){
         destinos.add(destino)
     }
@@ -42,20 +40,22 @@ object paquetonViajero{
         return destinos
     }
 
+    method precio(){
+        return precio
+    }
+
     method precio(_precio){
         precio = _precio * destinos.size()//precio que cambia segun elementos de la lista destinos
     }
 
-    method pagos(precioDeTodosLosDestinos){ //TODO
-        pagos.add(100) * destinos.size() //debi hacer un clousure en que tenga dentro el destino.size, ya que el * no funciona como quisiera en este caso
-        //igual cantidad de elementos que destinos pero 100 en cada posicion de la lista
-    }
     method pagos(){
-        return
+        const pagos = [] //uso list ya que permite duplicados
+        destinos.forEach ({ destino => pagos.add(100) })
+        return pagos
     }
 
     method puedeSerEntregado(mensajero){
-        return mensajero.pasaPorTodosLosDestinos() && estaPago    
+        return mensajero.pasaPorTodosLosDestinos() && self.pagos().isEmpty()    
         //depende de si puede pasar el mensajero por todos los destinos
     }
 
