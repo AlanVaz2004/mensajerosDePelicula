@@ -115,11 +115,12 @@ object mensajeros{
         return contratados.last().peso()
     }
 
-    method puedeAlgunMensajeroEntregar(paquete){
-        return self.contratados().any{ mensajero => mensajero.puedeEntregar(paquete) }
+    method puedeAlgunMensajeroEntregar(paquete){ //TODO
+        return self.contratados().any{ mensajero => paquete.puedeSerEntregado(mensajero) }
     }
 
-    method quienesPuedenLlevarPaquete(paquete){
+    method quienesPuedenLlevarPaquete(paquete){//TODO
+        return self.contratados().filter{ mensajero => paquete.puedeSerEntregado(mensajero) }
         //devuelve collecion de mensajeros que pueden
     }
 
