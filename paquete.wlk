@@ -1,5 +1,6 @@
 import destino.*
 import mensajero.*
+//Ahora todos deben entender el mensaje enviar
 object paquete{
     var destino = matrix
     var property fuePagado = false
