@@ -70,6 +70,11 @@ object saraConnor{
 object mensajeros{
     const contratados = []
     const despedidos = []
+    //paquetes pendientes = []
+
+    method contratados(){
+        return contratados
+    }
 
     method contratar(mensajero){
         contratados.add(mensajero)
@@ -108,5 +113,27 @@ object mensajeros{
 
     method pesoDelUltimoMensajero(){
         return contratados.last().peso()
+    }
+
+    method puedeAlgunMensajeroEntregar(paquete){
+        return self.contratados().any{ mensajero => mensajero.puedeEntregar(paquete) }
+    }
+
+    method quienesPuedenLlevarPaquete(paquete){
+        //devuelve collecion de mensajeros que pueden
+    }
+
+    method tieneSobrePeso(mensajeriaCompleta){
+        //supera los 500 kg la mensajeria
+    }
+
+    //punto 4
+
+    method enviarTodosLosPaquetes(){
+        //enviar todos los paquetes de una coleccion
+    }
+
+    method enviarPaquetePendienteMasCaro(){
+        //si es posible enviar el paquete pendiente mas caro
     }
 }
