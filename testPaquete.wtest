@@ -195,5 +195,13 @@ describe "Mensajeria recargada"{
         paquetonViajero.agregarDestino(matrix)
         paquetonViajero.precio(100)
         assert.equals(200, paquetonViajero.precio() )
-    }//da falso ya que todavia no termine con lo del precio
+    }
+
+    test "Al menos uno de los mensajeros puede entregar el paquete"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        paquete.fuePagado(true)
+        assert.that(mensajeros.puedeAlgunMensajeroEntregar(paquete) )
+    }
 }
