@@ -71,6 +71,8 @@ object mensajeros{
     const contratados = []
     const despedidos = []
     const paquetesPendientes = []
+    const paquetesEnviados = []
+    var facturacion = 0
 
     method contratados(){
         return contratados
@@ -78,6 +80,14 @@ object mensajeros{
 
     method contratar(mensajero){
         contratados.add(mensajero)
+    }
+
+    method facturacion(){
+        return facturacion
+    }
+
+    method facturacion(_facturacion){
+        facturacion = _facturacion
     }
 
     method estaContratado(mensajero){
@@ -129,10 +139,13 @@ object mensajeros{
         //supera los 500 kg el promedio de peso de los mensajeros
     }
 
-    //punto 4
+    method enviarUnPaquete(){
+        //enviar si es posible
+    }
 
     method enviarTodosLosPaquetes(){
-        paquetesPendientes.forEach{ paquete => paquete.enviar() }
+        paquetesPendientes.forEach{ paquete => paquetesEnviados.add(paquete)
+        paquetesPendientes.remove(paquete) }
         //enviar todos los paquetes de una coleccion
     }
 

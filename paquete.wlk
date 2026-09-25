@@ -1,6 +1,5 @@
 import destino.*
 import mensajero.*
-//Ahora todos deben entender el mensaje enviar
 object paquete{
     var destino = matrix
     var property fuePagado = false
@@ -32,6 +31,7 @@ object paquetito{
 object paquetonViajero{
     const destinos = [] //uso list ya que permite duplicados
     var precio = 0 
+    const pagos = [] //uso list ya que permite duplicados
     
     method agregarDestino(destino){
         destinos.add(destino)
@@ -50,7 +50,6 @@ object paquetonViajero{
     }
 
     method pagos(){
-        const pagos = [] //uso list ya que permite duplicados
         destinos.forEach ({ destino => pagos.add(100) })
         return pagos
     }
@@ -61,6 +60,7 @@ object paquetonViajero{
     }
 
     method pagarUnDestino(){
+        pagos.remove(pagos.first())
         //pagar los 100 de un destino de la lista (por tanto quitar ese pago de lista de pagos)
     }
 }
