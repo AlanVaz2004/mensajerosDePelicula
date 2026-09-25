@@ -212,4 +212,11 @@ describe "Mensajeria recargada"{
         paquete.fuePagado(true)
         assert.equals([neo,jeanGrey] , mensajeros.quienesPuedenLlevarPaquete(paquete) )
     }
+
+    test "Mensajería no tiene sobrepeso(promedio del peso superior a 500 Kg)"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        assert.notThat(mensajeros.tieneSobrePesoLaMensajeria())
+    }
 }
