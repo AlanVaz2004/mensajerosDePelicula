@@ -95,7 +95,7 @@ object mensajeros{
     }
 
     method facturacion(_facturacion){
-        facturacion = _facturacion
+        facturacion = facturacion + _facturacion //suma de todos los precios de los paquetes
     }
 
     method estaContratado(mensajero){
@@ -151,6 +151,7 @@ object mensajeros{
         if(self.puedeAlgunMensajeroEntregar(paquete)){
             paquetesEnviados.add(paquete)
             paquetesPendientes.remove(paquete)
+            self.facturacion(paquete.precio())
         } else{
             paquetesPendientes.add(paquete)
         }

@@ -254,4 +254,13 @@ describe "Mensajeria recargada"{
         mensajeros.enviarPaquetePendienteMasCaro()
         assert.equals([paquetonViajero], mensajeros.paquetesPendientes())
     }
+
+    test "La mensajeria factura 500 debido al paquete que envia"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        paquete.fuePagado(true)
+        mensajeros.enviarPaquete(paquete)
+        assert.equals( 500, mensajeros.facturacion() )
+    }
 }
