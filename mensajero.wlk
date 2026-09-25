@@ -139,7 +139,12 @@ object mensajeros{
         //supera los 500 kg el promedio de peso de los mensajeros
     }
 
-    method enviarUnPaquete(){
+    method enviarUnPaquete(paquete){
+        if(self.puedeAlgunMensajeroEntregar(paquete)){
+            paquetesEnviados.add(paquete)
+        } else{
+            paquetesPendientes.add(paquete)
+        }
         //enviar si es posible
     }
 
