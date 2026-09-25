@@ -204,4 +204,12 @@ describe "Mensajeria recargada"{
         paquete.fuePagado(true)
         assert.that(mensajeros.puedeAlgunMensajeroEntregar(paquete) )
     }
+
+    test "Todos los mensajeros que pueden llevar el paquete"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        paquete.fuePagado(true)
+        assert.equals([neo,jeanGrey] , mensajeros.quienesPuedenLlevarPaquete(paquete) )
+    }
 }
