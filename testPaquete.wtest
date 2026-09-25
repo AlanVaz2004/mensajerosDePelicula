@@ -228,4 +228,12 @@ describe "Mensajeria recargada"{
         mensajeros.enviarPaquete(paquete)
         assert.equals(false,mensajeros.paquetesEnviados().isEmpty()  )
     }
+
+    test "Dado un conjunto de paquetes, enviarlos a todos."{
+        mensajeros.enviarPaquete(paquete)
+        mensajeros.enviarPaquete(paquetito)
+        mensajeros.enviarPaquete(paquetonViajero)
+        mensajeros.enviarTodosLosPaquetes()
+        assert.that(mensajeros.paquetesPendientes().isEmpty() )
+    }
 }

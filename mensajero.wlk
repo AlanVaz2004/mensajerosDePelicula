@@ -74,6 +74,10 @@ object mensajeros{
     const paquetesEnviados = []
     var facturacion = 0
 
+    method paquetesPendientes(){
+        return paquetesPendientes
+    }
+
     method paquetesEnviados(){
         return paquetesEnviados
     }
