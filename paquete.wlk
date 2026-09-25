@@ -64,3 +64,20 @@ object paquetonViajero{
         //pagar los 100 de un destino de la lista (por tanto quitar ese pago de lista de pagos)
     }
 }
+
+object paquetePremium{
+    var fuePagado = false
+
+    method fuePagado(_fuePagado){
+        fuePagado = _fuePagado
+    }
+
+    method puedeSerEntregado(mensajero){
+        return fuePagado
+    }
+
+    method precio(){
+        return 100000
+    }
+
+}
