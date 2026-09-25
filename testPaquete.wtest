@@ -219,4 +219,13 @@ describe "Mensajeria recargada"{
         mensajeros.contratar(jeanGrey)
         assert.notThat(mensajeros.tieneSobrePesoLaMensajeria())
     }
+
+    test "Hacer que la empresa de mensajería envíe un paquete."{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        paquete.fuePagado(true)
+        mensajeros.enviarPaquete(paquete)
+        assert.equals(false,mensajeros.paquetesEnviados().isEmpty()  )
+    }
 }
