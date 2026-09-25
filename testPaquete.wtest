@@ -168,6 +168,8 @@ describe "Mensajeria recargada"{
         saraConnor.vehiculo(camion)
         paquetonViajero.agregarDestino(matrix)
         paquetonViajero.agregarDestino(brooklyn)
+        paquetonViajero.pagarUnDestino()
+        paquetonViajero.pagarUnDestino()
         assert.notThat(paquetonViajero.puedeSerEntregado(saraConnor) )
     }
 
@@ -176,18 +178,22 @@ describe "Mensajeria recargada"{
         saraConnor.vehiculo(camion)
         camion.acoplados(1)
         paquetonViajero.agregarDestino(brooklyn)
+        paquetonViajero.pagarUnDestino()
         assert.notThat(paquetonViajero.puedeSerEntregado(saraConnor) )
     }
 
     test "Jean Grey puede llevar el paquete a todos los destinos"{
         paquetonViajero.agregarDestino(brooklyn)
         paquetonViajero.agregarDestino(matrix)
+        paquetonViajero.pagarUnDestino()
+        paquetonViajero.pagarUnDestino()
         assert.that(paquetonViajero.puedeSerEntregado(jeanGrey) )
     }
 
     test "El precio del paqueton viajero es 200 ya que tiene 2 destinos"{
         paquetonViajero.agregarDestino(brooklyn)
         paquetonViajero.agregarDestino(matrix)
+        paquetonViajero.precio(100)
         assert.equals(200, paquetonViajero.precio() )
     }//da falso ya que todavia no termine con lo del precio
 }
