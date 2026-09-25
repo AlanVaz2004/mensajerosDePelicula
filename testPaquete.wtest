@@ -236,4 +236,22 @@ describe "Mensajeria recargada"{
         mensajeros.enviarTodosLosPaquetes()
         assert.that(mensajeros.paquetesPendientes().isEmpty() )
     }
+
+    test "El paquete pendiente mas caro es el paquete normal"{
+        mensajeros.enviarPaquete(paquete)
+        mensajeros.enviarPaquete(paquetito)
+        mensajeros.enviarPaquete(paquetonViajero)
+        assert.equals(paquete, mensajeros.paquetePendienteMasCaro())
+    }
+
+    test "Encontrar el paquete pendiente más caro y enviarlo"{
+        mensajeros.enviarPaquete(paquete)
+        mensajeros.enviarPaquete(paquetonViajero)
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        paquete.fuePagado(true)
+        mensajeros.enviarPaquetePendienteMasCaro()
+        assert.equals([paquetonViajero], mensajeros.paquetesPendientes())
+    }
 }

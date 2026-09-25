@@ -150,6 +150,7 @@ object mensajeros{
     method enviarPaquete(paquete){
         if(self.puedeAlgunMensajeroEntregar(paquete)){
             paquetesEnviados.add(paquete)
+            paquetesPendientes.remove(paquete)
         } else{
             paquetesPendientes.add(paquete)
         }
