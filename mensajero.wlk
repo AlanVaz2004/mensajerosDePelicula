@@ -139,7 +139,7 @@ object mensajeros{
         //supera los 500 kg el promedio de peso de los mensajeros
     }
 
-    method enviarUnPaquete(paquete){
+    method enviarPaquete(paquete){
         if(self.puedeAlgunMensajeroEntregar(paquete)){
             paquetesEnviados.add(paquete)
         } else{
@@ -154,9 +154,12 @@ object mensajeros{
         //enviar todos los paquetes de una coleccion
     }
 
-    //bloque que me de el paquete mas caro
+    method paquetePendienteMasCaro(){
+        return paquetesPendientes.max{ paquete => paquete.precio()}
+    }
+    
     method enviarPaquetePendienteMasCaro(){
-        // esta mal por si solo : paquetesPendientes.max().enviarSiEsPosible()
+        self.enviarPaquete(self.paquetePendienteMasCaro())
         //si es posible enviar el paquete pendiente mas caro
     }
 }
