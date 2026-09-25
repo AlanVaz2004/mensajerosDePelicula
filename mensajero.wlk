@@ -18,6 +18,23 @@ object jeanGrey{
     }
 }
 
+object batman{
+    const puedeLlamar = true
+    const peso = 120
+    method peso(){
+        return peso
+    }
+
+    method puedeLlamar(){
+        return puedeLlamar
+    }
+
+    method pasaPorTodosLosDestinos(){
+        return paquetonViajero.destinos().all({destino => destino.dejaEntrar(self) } )
+    }
+} 
+
+
 object neo{
     var puedeLlamar = true
     const peso = 0
