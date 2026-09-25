@@ -158,6 +158,8 @@ describe "Mensajeria recargada"{
         paquetonViajero.agregarDestino(matrix)
         paquetonViajero.agregarDestino(brooklyn)
         neo.puedeLlamar(true)
+        paquetonViajero.pagarUnDestino()
+        paquetonViajero.pagarUnDestino()
         assert.that(paquetonViajero.puedeSerEntregado(neo) )
     }
 

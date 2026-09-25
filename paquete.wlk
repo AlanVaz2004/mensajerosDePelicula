@@ -35,6 +35,7 @@ object paquetonViajero{
     
     method agregarDestino(destino){
         destinos.add(destino)
+        pagos.add(100)
     }
 
     method destinos(){
@@ -50,7 +51,6 @@ object paquetonViajero{
     }
 
     method pagos(){
-        destinos.forEach ({ destino => pagos.add(100) })
         return pagos
     }
 
