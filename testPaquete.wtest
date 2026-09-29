@@ -1,0 +1,266 @@
+import paquete.*
+import destino.*
+import mensajero.*
+import vehiculos.*
+
+describe "El paquete a Spilberg"{
+    test "Si el paquete va a matrix vale 500"{
+        paquete.destino(matrix)
+        assert.equals(500, paquete.precio())
+    }
+
+    test "Si el paquete va a brooklyn vale 150"{
+        paquete.destino(brooklyn)
+        assert.equals(150, paquete.precio())
+    }
+
+    test "El paquete pasa a estar pagado"{
+        paquete.fuePagado(false) //al principio 
+        paquete.fuePagado(true) //luego pasa a estar pago
+        assert.that(paquete.fuePagado())
+    }
+
+    test "Neo no puede llevar el paquete"{
+        //pedido como caso de de prueba en enunciado
+        paquete.fuePagado(false)
+        paquete.destino(matrix)
+        neo.puedeLlamar(true)
+        assert.notThat(paquete.puedeSerEntregado(neo) )
+    }
+
+    test "Sara pesa 1070 kilos por usar camion con un acoplado"{
+        saraConnor.vehiculo(camion)
+        saraConnor.peso(70)
+        camion.acoplados(1)
+        assert.equals(1070, saraConnor.peso() )
+    }
+
+    test "Jean puede llevar el paquete a la matrix"{
+        //pedido como caso de de prueba en enunciado
+        paquete.fuePagado(true)
+        paquete.destino(matrix)
+        assert.that(paquete.puedeSerEntregado(jeanGrey) )
+    }
+
+    test "Sara no puede llevar el paquete a brooklyn"{
+        //pedido como caso de de prueba en enunciado
+        paquete.fuePagado(true)
+        paquete.destino(brooklyn)
+        saraConnor.peso(70)
+        saraConnor.vehiculo(camion)
+        camion.acoplados(1)
+        assert.notThat(paquete.puedeSerEntregado(saraConnor))
+    }
+
+    test "Sara puede llevar el paquete a brooklyn"{
+        //pedido como caso de de prueba en enunciado
+        paquete.fuePagado(true)
+        paquete.destino(brooklyn)
+        saraConnor.peso(70)
+        saraConnor.vehiculo(moto)
+        assert.that(paquete.puedeSerEntregado(saraConnor))
+    }
+
+    test "El hecho de que Sara pese 1000 kilos no es problema"{
+        paquete.fuePagado(true)
+        paquete.destino(brooklyn)
+        saraConnor.peso(0)
+        saraConnor.vehiculo(camion)
+        camion.acoplados(1)
+        assert.that(paquete.puedeSerEntregado(saraConnor))
+    }
+}
+
+describe "La mensajeria"{
+    
+      test "Contratar a neo como mensajero"{
+        mensajeros.contratar(neo)
+        assert.that(mensajeros.estaContratado(neo))
+    }
+
+    test "Despedir a saraConnor"{
+        mensajeros.contratar(saraConnor)
+        mensajeros.despedir(saraConnor)
+        assert.that(mensajeros.estaDespedido(saraConnor))
+    }
+
+    test "Despedir a todos"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(jeanGrey)
+        mensajeros.contratar(saraConnor)
+        mensajeros.despedirATodos()
+        assert.notThat(mensajeros.hayMensajerosContratados())
+    }
+
+    test "La mensajeria es grande"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(jeanGrey)
+        mensajeros.contratar(saraConnor)
+        assert.that(mensajeros.esGrande())
+    }
+
+    test "Paquete puede ser entregado por el primer empleado de la empresa de mensajería"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(jeanGrey)
+        mensajeros.contratar(saraConnor)
+        paquete.fuePagado(true)
+        paquete.destino(matrix)
+        neo.puedeLlamar(true)
+        assert.equals(true,mensajeros.elPrimeroPuedeEntregar())
+    }
+
+    test "Paquete no puede ser entregado por el primer empleado de la empresa de mensajería"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(jeanGrey)
+        mensajeros.contratar(saraConnor)
+        paquete.fuePagado(false)
+        paquete.destino(matrix)
+        neo.puedeLlamar(true)
+        assert.equals(false, mensajeros.elPrimeroPuedeEntregar())
+    }
+
+    test "Peso de neo(que es el ultimo de la mensajeria) es cero"{
+        mensajeros.contratar(jeanGrey)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(neo)
+        assert.equals(0, mensajeros.pesoDelUltimoMensajero())
+    }
+
+    test "Peso de Jean Grey(que es la ultima de la mensajeria) es 65"{
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(neo)
+        mensajeros.contratar(jeanGrey)
+        assert.equals(65, mensajeros.pesoDelUltimoMensajero())
+    }
+}
+
+describe "Mensajeria recargada"{
+
+    test "Paquetito siempre puede ser entregado (parte 1)"{
+        assert.that(paquetito.puedeSerEntregado(neo) )
+    }
+
+    test "Paquetito siempre puede ser entregado (parte 2)"{
+        assert.that(paquetito.puedeSerEntregado(jeanGrey) )
+    }
+
+    test "Paquetito siempre puede ser entregado (parte 3)"{
+        assert.that(paquetito.puedeSerEntregado(saraConnor) )
+    }
+
+    test "Paqueton viajero tiene una lista de destinos con matrix y brooklyn"{
+        paquetonViajero.agregarDestino(matrix)
+        paquetonViajero.agregarDestino(brooklyn)
+        assert.equals([matrix, brooklyn], paquetonViajero.destinos() )
+    }
+    
+    test "Neo puede llevar el paquete a todos los destinos"{
+        paquetonViajero.agregarDestino(matrix)
+        paquetonViajero.agregarDestino(brooklyn)
+        neo.puedeLlamar(true)
+        paquetonViajero.pagarUnDestino()
+        paquetonViajero.pagarUnDestino()
+        assert.that(paquetonViajero.puedeSerEntregado(neo) )
+    }
+
+    test "Sara no puede llevar el paquete a todos los destinos(no puede llamar) "{
+        saraConnor.peso(70)
+        saraConnor.vehiculo(camion)
+        paquetonViajero.agregarDestino(matrix)
+        paquetonViajero.agregarDestino(brooklyn)
+        paquetonViajero.pagarUnDestino()
+        paquetonViajero.pagarUnDestino()
+        assert.notThat(paquetonViajero.puedeSerEntregado(saraConnor) )
+    }
+
+    test "Sara no puede llevar el paquete a todos los destinos(pesa demasiado) "{
+        saraConnor.peso(70)
+        saraConnor.vehiculo(camion)
+        camion.acoplados(1)
+        paquetonViajero.agregarDestino(brooklyn)
+        paquetonViajero.pagarUnDestino()
+        assert.notThat(paquetonViajero.puedeSerEntregado(saraConnor) )
+    }
+
+    test "Jean Grey puede llevar el paquete a todos los destinos"{
+        paquetonViajero.agregarDestino(brooklyn)
+        paquetonViajero.agregarDestino(matrix)
+        paquetonViajero.pagarUnDestino()
+        paquetonViajero.pagarUnDestino()
+        assert.that(paquetonViajero.puedeSerEntregado(jeanGrey) )
+    }
+
+    test "El precio del paqueton viajero es 200 ya que tiene 2 destinos"{
+        paquetonViajero.agregarDestino(brooklyn)
+        paquetonViajero.agregarDestino(matrix)
+        paquetonViajero.precio(100)
+        assert.equals(200, paquetonViajero.precio() )
+    }
+
+    test "Al menos uno de los mensajeros puede entregar el paquete"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        paquete.fuePagado(true)
+        assert.that(mensajeros.puedeAlgunMensajeroEntregar(paquete) )
+    }
+
+    test "Todos los mensajeros que pueden llevar el paquete"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        paquete.fuePagado(true)
+        assert.equals([neo,jeanGrey] , mensajeros.quienesPuedenLlevarPaquete(paquete) )
+    }
+
+    test "Mensajería no tiene sobrepeso(promedio del peso superior a 500 Kg)"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        assert.notThat(mensajeros.tieneSobrePesoLaMensajeria())
+    }
+
+    test "Hacer que la empresa de mensajería envíe un paquete."{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        paquete.fuePagado(true)
+        mensajeros.enviarPaquete(paquete)
+        assert.equals(false,mensajeros.paquetesEnviados().isEmpty()  )
+    }
+
+    test "Dado un conjunto de paquetes, enviarlos a todos."{
+        mensajeros.enviarPaquete(paquete)
+        mensajeros.enviarPaquete(paquetito)
+        mensajeros.enviarPaquete(paquetonViajero)
+        mensajeros.enviarTodosLosPaquetes()
+        assert.that(mensajeros.paquetesPendientes().isEmpty() )
+    }
+
+    test "El paquete pendiente mas caro es el paquete normal"{
+        mensajeros.enviarPaquete(paquete)
+        mensajeros.enviarPaquete(paquetito)
+        mensajeros.enviarPaquete(paquetonViajero)
+        assert.equals(paquete, mensajeros.paquetePendienteMasCaro())
+    }
+
+    test "Encontrar el paquete pendiente más caro y enviarlo"{
+        mensajeros.enviarPaquete(paquete)
+        mensajeros.enviarPaquete(paquetonViajero)
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        paquete.fuePagado(true)
+        mensajeros.enviarPaquetePendienteMasCaro()
+        assert.equals([paquetonViajero], mensajeros.paquetesPendientes())
+    }
+
+    test "La mensajeria factura 500 debido al paquete que envia"{
+        mensajeros.contratar(neo)
+        mensajeros.contratar(saraConnor)
+        mensajeros.contratar(jeanGrey)
+        paquete.fuePagado(true)
+        mensajeros.enviarPaquete(paquete)
+        assert.equals( 500, mensajeros.facturacion() )
+    }
+}
